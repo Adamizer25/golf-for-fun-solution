@@ -10,4 +10,4 @@ app.use(expressjwt);
 app.use('/sign', sign)
 app.use('/graphql', graphql);
 app.listen(port);
-console.log('Running a GraphQL API server at localhost:4000');
+console.log(`Running a GraphQL API server at localhost:${port}`);

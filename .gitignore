@@ -2,3 +2,5 @@ api/node_modules
 api/dist
 api/public
 api/package-lock.json
+dynamo-db/node_modules
+dynamo-db/logs.txt
