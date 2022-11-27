@@ -9,16 +9,15 @@ var app = express();
 app.use(bodyParser.json())
 app.use(logger)
 
+// this is from the doc but it's nice
 var verbose = process.env.NODE_ENV != 'test';
 app.map = function (a, route) {
     route = route || '';
     for (var key in a) {
         switch (typeof a[key]) {
-            // { '/path': { ... }}
             case 'object':
                 app.map(a[key], route + key);
                 break;
-            // get: function(){ ... }
             case 'function':
                 if (verbose) console.log('%s %s', key, route);
                 app[key](route, a[key]);
@@ -27,6 +26,7 @@ app.map = function (a, route) {
     }
 };
 
+// it lets me do this
 app.map({
     '/users': {
         get: users.list,
